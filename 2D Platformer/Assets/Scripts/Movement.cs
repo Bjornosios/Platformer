@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -53,6 +54,14 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerRb.linearVelocity = new Vector2(MoveVector.x * MoveSpeed, PlayerRb.linearVelocity.y);
+        if(MoveVector.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if(MoveVector.x < 0)
+        {
+            transform.rotation = quaternion.Euler(0, 11, 0);
+        }
     }
     void Jump()
     {
